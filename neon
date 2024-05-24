@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int isNeon(int num) {
+    int square = num * num;
+    int sum = 0;
+    while (square != 0) {
+        sum += square % 10;
+        square /= 10;
+    }
+
+    return (sum == num);
+}
+
+int main() {
+    printf("Neon numbers up to 50:\n");
+    for (int i = 1; i <= 50; i++) {
+        if (isNeon(i)) {
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
