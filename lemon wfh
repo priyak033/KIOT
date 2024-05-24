@@ -1,0 +1,9 @@
+#include<stdio.h>
+int main() {
+    int lemons;
+    printf("Enter the number of lemons you have: ");
+    scanf("%d", &lemons);
+    printf("%s", (lemons == 21) ? "Sufficient lemons" : (lemons > 21) ? "extra lemons" : " Need more lemons");
+
+    return 0;
+}
