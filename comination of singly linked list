@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct node {
+  int value;
+  struct node *next;
+};
+
+
+void printLinkedList(struct node *p) {
+  while (p != NULL) {
+    printf("%d ", p->value);
+    p = p->next;
+  }
+}
+
+struct node* combineLinkedLists(struct node *list1, struct node *list2) {
+  struct node *combinedList = NULL;
+  struct node *temp = NULL;
+
+ 
+  if (list1 == NULL)
+    return list2;
+  if (list2 == NULL)
+    return list1;
+
+ 
+  combinedList = list1;
+  temp = list1;
+  while (temp->next != NULL) {
+    temp = temp->next;
+  }
+  temp->next = list2;
+
+  return combinedList;
+}
+
+int main() {
+  struct node *one = NULL;
+  struct node *two = NULL;
+  struct node *three = NULL;
+
+  struct node *four = NULL;
+  struct node *five = NULL;
+  struct node *six = NULL;
+
+  one = malloc(sizeof(struct node));
+  two = malloc(sizeof(struct node));
+  three = malloc(sizeof(struct node));
+
+
+  four = malloc(sizeof(struct node));
+  five = malloc(sizeof(struct node));
+  six = malloc(sizeof(struct node));
+
+
+  printf("Enter value for node one (first list): ");
+  scanf("%d", &one->value);
+  printf("Enter value for node two (first list): ");
+  scanf("%d", &two->value);
+  printf("Enter value for node three (first list): ");
+  scanf("%d", &three->value);
+
+ 
+  one->next = two;
+  two->next = three;
+  three->next = NULL;
+
+  printf("Enter value for node four (second list): ");
+  scanf("%d", &four->value);
+  printf("Enter value for node five (second list): ");
+  scanf("%d", &five->value);
+  printf("Enter value for node six (second list): ");
+  scanf("%d", &six->value);
+
+ 
+  four->next = five;
+  five->next = six;
+  six->next = NULL;
+
+ 
+
+
+ 
+  struct node *combinedList = combineLinkedLists(one, four);
+
+ 
+  printf("Combined linked list: ");
+  printLinkedList(combinedList);
+  printf("\n");
+
+  return 0;
+}
