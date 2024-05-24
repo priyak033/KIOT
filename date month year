@@ -1,0 +1,57 @@
+#include<stdio.h>
+
+int main(){
+    int k, m, c, d, f;
+    printf("Enter your date: ");
+    scanf("%d", &k);
+    if(k <= 31 && k >= 1) {
+        printf("Enter your month : ");
+        scanf("%d", &m);
+        if(m <= 12 && m >= 1) {
+            printf("Enter the first two digits of your year: ");
+            scanf("%d", &c);
+            printf("Enter the last two digits of your year: ");
+            scanf("%d", &d);
+            if (m == 1 || m == 2) {
+                m += 12;
+                c--;
+            }
+            f = k + ((13 * (m + 1)) / 5) + d + (d / 4) + (c / 4) - (2 * c);
+            int r = f % 7;
+            if ((c % 4 == 0 && c % 100 != 0) || (c % 400 == 0)) {
+                if (m > 2) {
+                    r--;
+                }
+            }
+
+            switch(r) {
+                case 0:
+                    printf("Sunday");
+                    break;
+                case 1:
+                    printf("Monday");
+                    break;
+                case 2:
+                    printf("Tuesday");
+                    break;
+                case 3:
+                    printf("Wednesday");
+                    break;
+                case 4:
+                    printf("Thursday");
+                    break;
+                case 5:
+                    printf("Friday");
+                    break;
+                case 6:
+                    printf("Saturday");
+                    break;
+            }
+        } else {
+            printf("Invalid month");
+        }
+    } else {
+        printf("Invalid date");
+    }
+    return 0;
+}
